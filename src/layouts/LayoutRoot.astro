@@ -4,7 +4,7 @@ import '@styles/global.css';
 
 <!doctype html>
 <!-- change themes or use a custom theme https://themes.skeleton.dev/themes/create -->
-<html lang="en" data-theme="cerberus">
+<html lang="en" data-theme="mistahuman-theme">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -13,12 +13,12 @@ import '@styles/global.css';
     <title>mistahuman's Github Pages</title>
     <!-- Theme and Mode -->
     <script is:inline>
-      // function applyTheme(document) {
-      // 	const storedTheme = localStorage.getItem('theme');
-      // 	const defaultTheme = 'cerberus';
-      // 	const theme = storedTheme ?? defaultTheme;
-      // 	document.documentElement.setAttribute('data-theme', theme);
-      // }
+      function applyTheme(document) {
+        const storedTheme = localStorage.getItem('theme');
+        const defaultTheme = 'mistahuman-theme';
+        const theme = storedTheme ?? defaultTheme;
+        document.documentElement.setAttribute('data-theme', theme);
+      }
 
       function applyMode(document) {
         const storedMode = localStorage.getItem('mode');
@@ -30,11 +30,11 @@ import '@styles/global.css';
         document.documentElement.setAttribute('data-mode', mode);
       }
 
-      // applyTheme(document);
+      applyTheme(document);
       applyMode(document);
 
       document.addEventListener('astro:before-swap', (event) => {
-        // applyTheme(event.newDocument);
+        applyTheme(event.newDocument);
         applyMode(event.newDocument);
       });
     </script>

@@ -3,6 +3,7 @@
 import Drawer from '@components/generic/Drawer.astro';
 import Logo from '@components/generic/Logo.astro';
 import Lightswitch from '@components/generic/Lightswitch.astro';
+import ThemeSwitch from '@components/generic/ThemeSwitch.svelte';
 // Icons
 import { Github } from 'lucide-svelte';
 
@@ -45,6 +46,7 @@ const coreLinks = [{ href: base, label: 'home', target: '_self' }];
     <div class="flex justify-end items-stretch gap-2">
       <!-- Mode and Theme -->
       <Lightswitch />
+      <ThemeSwitch client:load />
       <!-- Divider -->
       <span class="border-r border-surface-200-800"></span>
       <!-- Social -->
