@@ -3,6 +3,8 @@
   import { Palette } from 'lucide-svelte';
   import { Popover, Portal } from '@skeletonlabs/skeleton-svelte';
 
+  let { defaultTheme = 'mistahuman-theme' }: { defaultTheme?: string } = $props();
+
   const themes = [
     { id: 'mistahuman-theme', label: 'Mistahuman', emoji: '🧑‍💻' },
     { id: 'catppuccin', label: 'Catppuccin', emoji: '🐈' },
@@ -32,10 +34,10 @@
   ];
 
   // The island renders on the server first, so read the live theme only once hydrated.
-  let current = $state('mistahuman-theme');
+  let current = $state('');
 
   onMount(() => {
-    current = document.documentElement.getAttribute('data-theme') ?? 'mistahuman-theme';
+    current = document.documentElement.getAttribute('data-theme') ?? defaultTheme;
   });
 
   function setTheme(id: string) {

@@ -1,10 +1,11 @@
 ---
 import '@styles/global.css';
+import { THEME_PICKER, DEFAULT_THEME } from '@config';
 ---
 
 <!doctype html>
 <!-- change themes or use a custom theme https://themes.skeleton.dev/themes/create -->
-<html lang="en" data-theme="mistahuman-theme">
+<html lang="en" data-theme={DEFAULT_THEME}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -12,10 +13,11 @@ import '@styles/global.css';
     <meta name="generator" content={Astro.generator} />
     <title>mistahuman's Github Pages</title>
     <!-- Theme and Mode -->
-    <script is:inline>
+    <script is:inline define:vars={{ themePicker: THEME_PICKER, defaultTheme: DEFAULT_THEME }}>
       function applyTheme(document) {
+        // Picker disabled: the server-rendered data-theme already holds the default.
+        if (!themePicker) return;
         const storedTheme = localStorage.getItem('theme');
-        const defaultTheme = 'mistahuman-theme';
         const theme = storedTheme ?? defaultTheme;
         document.documentElement.setAttribute('data-theme', theme);
       }
